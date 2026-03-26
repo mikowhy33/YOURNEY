@@ -15,7 +15,7 @@ export const PopUpComponent = ({ addNote, hidePopUp }: noteTypes) => {
   const handleNoteForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // if (!conversation) return;
+    // if (!conversation) return; przyslosciowo pod serwer!
 
     if (note.length < 4) {
       setError('Note is too short, an absolute minimum is 4 characters');
@@ -33,8 +33,8 @@ export const PopUpComponent = ({ addNote, hidePopUp }: noteTypes) => {
       onClose={hidePopUp}
       PaperProps={{
         sx: {
-          width: '400px',
-          minHeight: '400px',
+          width: { xs: '400px', md: '600px' },
+          minHeight: { xs: '400px', md: '500px' },
         },
       }}
       slotProps={{
@@ -47,11 +47,11 @@ export const PopUpComponent = ({ addNote, hidePopUp }: noteTypes) => {
       }}
     >
       {/* Title */}
-      <Box component="form" onSubmit={handleNoteForm} sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <Box component="form" onSubmit={handleNoteForm} sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
         <DialogTitle sx={{ textAlign: 'center' }}>Add a note for this conversation</DialogTitle>
 
         {/* Main */}
-        <DialogContent sx={{ display: 'flex', flexDirection: 'column', pt: 1 }}>
+        <DialogContent sx={{ pt: 1 }}>
           <TextField
             label="Please insert your note below"
             multiline // textarea!

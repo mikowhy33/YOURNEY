@@ -8,10 +8,11 @@ import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 const enterpriseTheme = createTheme({
   palette: {
     primary: {
-      main: '#5a67d8',
+      // main:'#5fb2fa' //'#5a67d8',
+      main:'#90D5FF' //'#5a67d8',
     },
     background: {
-      default: '#F5F5F5',
+      default: '#F2F2F2',
       paper: '#ffffff',
     },
   },
