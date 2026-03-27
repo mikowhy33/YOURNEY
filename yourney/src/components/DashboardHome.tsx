@@ -1,7 +1,8 @@
 import { Box, Button, Paper, Typography } from '@mui/material';
 import { useState } from 'react';
-import { PopUpComponent } from './reusableComponents/Popup';
-import { mockLessons, type LessonStatus } from '../mocks/lessonMock';
+import { PopUpComponent } from './smallerComponents/SmallPopup';
+import { BigPopUpComponent } from './smallerComponents/BigPopup';
+import { mockLessons, type Lesson, type LessonStatus } from '../mocks/lessonMock';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import RoomIcon from '@mui/icons-material/Room';
@@ -12,13 +13,19 @@ export const DashboardHome = () => {
   const [popUpOpened, setPopUpOpened] = useState<boolean>(false);
   const [notes, setNotes] = useState<string[]>([]);
 
+  const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
+
   const OpenPopUp = () => setPopUpOpened(true);
   const ClosePopUp = () => setPopUpOpened(false);
   const handleAddNote = (note: string) => setNotes((prev) => [...prev, note]);
 
   return (
     <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', p: { xs: 2, md: 4 } }}>
-      {popUpOpened && <PopUpComponent hidePopUp={ClosePopUp} addNote={handleAddNote} />}
+      {/* checklista */}
+      {popUpOpened === true && <PopUpComponent hidePopUp={ClosePopUp} addNote={handleAddNote} />}
+
+      {/* o danej lekcji */}
+      {selectedLesson && <BigPopUpComponent lessonData={selectedLesson} hidePopUp={() => setSelectedLesson(null)} />}
 
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, flexGrow: 1, gap: 4 }}>
         {/* lewa kolumna 75% */}
@@ -67,6 +74,7 @@ export const DashboardHome = () => {
                   transition: 'transform 0.2s',
                   '&:hover': { transform: 'translateY(-2px)', boxShadow: 3, cursor: 'pointer' },
                 }}
+                onClick={() => setSelectedLesson(lesson)}
               >
                 <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, borderBottom: '1.5px solid #acafb3' }}>
                   <Box sx={{ p: 2, pl: 1, maxWidth: 270 }}>
@@ -81,15 +89,14 @@ export const DashboardHome = () => {
                     sx={{
                       display: 'flex',
                       flexGrow: 1,
-                      pr:{xs:0,md: 2},
-                      pl:{xs:1,md:0},
-                      pb:{xs:1.5},
+                      pr: { xs: 0, md: 2 },
+                      pl: { xs: 1, md: 0 },
+                      pb: { xs: 1.5 },
                       justifyContent: { xs: 'flex-start', md: 'flex-end' },
                       alignItems: 'center',
                       gap: 1,
                     }}
                   >
-                  
                     <AssignmentIcon sx={{ color: 'text.secondary' }} />
 
                     {/* GDY SERWER TU BEDA CYFRY ZALEZNE OD TEGO JAK NAUCZYCIEL WPISAL! */}

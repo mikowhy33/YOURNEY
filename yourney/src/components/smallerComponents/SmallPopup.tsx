@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Box } from '@mui/material';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Box, Typography } from '@mui/material';
 import { useState } from 'react';
 
 type noteTypes = {
@@ -28,6 +28,7 @@ export const PopUpComponent = ({ addNote, hidePopUp }: noteTypes) => {
   };
 
   return (
+    // dialog ma rozbicie na glowny kontener 100% ekranu, backdrop ciemne rozmyte tlo, paper biale okno na srodku
     <Dialog
       open={true}
       onClose={hidePopUp}
@@ -72,10 +73,10 @@ export const PopUpComponent = ({ addNote, hidePopUp }: noteTypes) => {
         {/* Stopka */}
         <DialogActions sx={{ justifyContent: 'center', pb: 3 }}>
           <Button onClick={hidePopUp} sx={{ backgroundColor: '#F5F5F5', color: 'black', mr: 4 }}>
-            Cancel
+            <Typography>Cancel</Typography>
           </Button>
-          <Button type="submit" variant="contained" color="primary">
-            Submit your note
+          <Button type="submit" variant="contained">
+            <Typography>Submit your note</Typography>
           </Button>
         </DialogActions>
       </Box>
