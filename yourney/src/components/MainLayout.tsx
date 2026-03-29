@@ -47,6 +47,22 @@ export const MainLayout = () => {
       >
         Schedule View
       </Button>
+      <Button
+        component={NavLink}
+        to="/StudentCrm"
+        onClick={() => setMobileOpen(false)}
+        sx={{
+          justifyContent: 'flex-start',
+          color: '#000000',
+          '&.active': {
+            backgroundColor: 'primary.main',
+            color: '#000000',
+            fontWeight: 'bold',
+          },
+        }}
+      >
+        Student's crm
+      </Button>
     </Box>
   );
 

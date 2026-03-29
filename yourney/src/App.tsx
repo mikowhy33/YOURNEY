@@ -4,12 +4,13 @@ import ScheduleView from './components/ScheduleView';
 import { MainLayout } from './components/MainLayout';
 import { DashboardHome } from './components/DashboardHome';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { StudentCrmView } from './components/StudentCrmView';
 
 const enterpriseTheme = createTheme({
   palette: {
     primary: {
       // main:'#5fb2fa' //'#5a67d8',
-      main:'#90D5FF' //'#5a67d8',
+      main: '#90D5FF', //'#5a67d8',
     },
     background: {
       default: '#F2F2F2',
@@ -41,6 +42,8 @@ function App() {
               <Route path="/" element={<DashboardHome />}></Route>
 
               <Route path="ScheduleView" element={<ScheduleView />}></Route>
+
+              <Route path="StudentCrm" element={<StudentCrmView />}></Route>
             </Route>
           </Routes>
         </BrowserRouter>

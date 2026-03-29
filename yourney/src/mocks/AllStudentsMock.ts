@@ -1,0 +1,17 @@
+
+// NIE WIADOMO CZY ZROBIMY PLATNOSCI!
+export const allStudents = [
+  { id: 'S-105', firstName: 'Antoni', lastName: 'Kowalczyk', attendance: null, subId: 'PL-001', phone: '500111222', email: 'antoni.k@tmail.com', regDate: '01-09-2023', dob: '15-05-2010', payment: 0, city: 'Warszawa' },
+  { id: 'S-106', firstName: 'Julia', lastName: 'Kamińska', attendance: null, subId: '', phone: '600333444', email: 'julia.kam@nmail.com', regDate: '15-09-2023', dob: '22-08-2011', payment: 150, city: 'Kraków' },
+  { id: 'S-107', firstName: 'Filip', lastName: 'Lewandowski', attendance: null, subId: 'PL-042', phone: '700555666', email: 'f.lewandowski@tmail.com', regDate: '10-10-2022', dob: '30-01-2012', payment: 0, city: 'Wrocław' },
+  { id: 'S-108', firstName: 'Hanna', lastName: 'Zielińska', attendance: null, subId: '', phone: '800777888', email: 'hania.z@nmail.com', regDate: '01-02-2024', dob: '14-11-2013', payment: 50, city: 'Gdańsk' },
+  { id: 'S-109', firstName: 'Szymon', lastName: 'Szymański', attendance: null, subId: 'PL-099', phone: '501234567', email: 'szymon.sz@dayrep.com', regDate: '20-08-2021', dob: '05-06-2009', payment: 0, city: 'Poznań' },
+  { id: 'S-110', firstName: 'Alicja', lastName: 'Dąbrowska', attendance: null, subId: '', phone: '601987654', email: 'alicja.d@nomail.com', regDate: '05-09-2023', dob: '18-02-2011', payment: 300, city: 'Łódź' },
+  { id: 'S-101', firstName: 'Jan', lastName: 'Kowalski', attendance: null, subId: 'PL-101', phone: '702345678', email: 'jan.kowalski@tmail.com', regDate: '01-09-2020', dob: '10-04-2008', payment: 0, city: 'Warszawa' },
+  { id: 'S-102', firstName: 'Zofia', lastName: 'Nowak', attendance: null, subId: '', phone: '803456789', email: 'zosia.nowak@nmail.com', regDate: '15-10-2022', dob: '25-12-2010', payment: 0, city: 'Katowice' },
+  { id: 'S-103', firstName: 'Kacper', lastName: 'Wiśniewski', attendance: null, subId: 'PL-205', phone: '504567890', email: 'kacper.w@dayrep.com', regDate: '12-01-2024', dob: '08-07-2012', payment: 120, city: 'Szczecin' },
+  { id: 'S-104', firstName: 'Maja', lastName: 'Wójcik', attendance: null, subId: '', phone: '605678901', email: 'maja.wojcik@nomail.com', regDate: '03-03-2023', dob: '19-09-2013', payment: 0, city: 'Bydgoszcz' },
+  { id: 'S-111', firstName: 'Oliwier', lastName: 'Kozłowski', attendance: null, subId: 'PL-015', phone: '706789012', email: 'oliwier.k@tmail.com', regDate: '20-09-2021', dob: '02-11-2009', payment: 45, city: 'Lublin' },
+  { id: 'S-112', firstName: 'Lena', lastName: 'Jankowska', attendance: null, subId: '', phone: '807890123', email: 'lena.j@nmail.com', regDate: '01-09-2022', dob: '28-02-2011', payment: 0, city: 'Białystok' },
+  { id: 'S-113', firstName: 'Igor', lastName: 'Mazur', attendance: null, subId: 'PL-333', phone: '508901234', email: 'igor.mazur@dayrep.com', regDate: '10-11-2023', dob: '12-08-2012', payment: 200, city: 'Gdynia' },
+];
