@@ -63,6 +63,22 @@ export const MainLayout = () => {
       >
         Student's crm
       </Button>
+      <Button
+        component={NavLink}
+        to="/UserProfileView"
+        onClick={() => setMobileOpen(false)}
+        sx={{
+          justifyContent: 'flex-start',
+          color: '#000000',
+          '&.active': {
+            backgroundColor: 'primary.main',
+            color: '#000000',
+            fontWeight: 'bold',
+          },
+        }}
+      >
+        User's profile
+      </Button>
     </Box>
   );
 

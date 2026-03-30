@@ -5,6 +5,7 @@ import { MainLayout } from './components/MainLayout';
 import { DashboardHome } from './components/DashboardHome';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { StudentCrmView } from './components/StudentCrmView';
+import { UserProfileView } from './components/UserProfileView';
 
 const enterpriseTheme = createTheme({
   palette: {
@@ -44,6 +45,7 @@ function App() {
               <Route path="ScheduleView" element={<ScheduleView />}></Route>
 
               <Route path="StudentCrm" element={<StudentCrmView />}></Route>
+              <Route path="UserProfileView" element={<UserProfileView />}></Route>
             </Route>
           </Routes>
         </BrowserRouter>
