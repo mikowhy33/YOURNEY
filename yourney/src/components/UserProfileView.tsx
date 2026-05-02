@@ -94,7 +94,7 @@ export const UserProfileView = () => {
       </Box>
 
       {/* glowna karta*/}
-      <Paper elevation={0} sx={{ border: '1px solid #e2e8f0', borderRadius: 2, p: 4, mb: 4, maxWidth: '1800px' }}>
+      <Paper elevation={1} sx={{ border: '1px solid #e2e8f0', borderRadius: 2, p: 4, mb: 4, maxWidth: '1800px' }}>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, rowGap: 4 }}>
           <Box sx={{ width: '100%' }}>
             <Typography variant="caption" color="text.secondary" display="block" mb={0.5}>

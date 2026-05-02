@@ -79,6 +79,23 @@ export const MainLayout = () => {
       >
         User's profile
       </Button>
+      {/* TO GDY SERWER I ROLE WIDOCZNE TYLKO DLA RODZICOW/UCZNIOW! */}
+      <Button
+        component={NavLink}
+        to="/StudentDashboardView"
+        onClick={() => setMobileOpen(false)}
+        sx={{
+          justifyContent: 'flex-start',
+          color: '#000000',
+          '&.active': {
+            backgroundColor: 'primary.main',
+            color: '#000000',
+            fontWeight: 'bold',
+          },
+        }}
+      >
+        Student's metrics 
+      </Button>
     </Box>
   );
 
@@ -128,7 +145,6 @@ export const MainLayout = () => {
         component="main"
         sx={{
           flexGrow: 1,
-          p: 2,
           mt: { xs: 7, md: 0 },
           display: 'flex',
           flexDirection: 'column',

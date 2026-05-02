@@ -186,7 +186,7 @@ export const StudentCrmView = () => {
         </Box>
 
         {/* TABELA DANYCH */}
-        <TableContainer component={Paper} elevation={0} sx={{ border: '1px solid #e2e8f0', borderRadius: 2 }}>
+        <TableContainer component={Paper} elevation={1} sx={{ border: '1px solid #e2e8f0', borderRadius: 2 }}>
           <Table aria-label="student crm table">
             {/* NAGLOWKI TABELI */}
             <TableHead sx={{ backgroundColor: '#f8fafc' }}>

@@ -6,6 +6,8 @@ import { DashboardHome } from './components/DashboardHome';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { StudentCrmView } from './components/StudentCrmView';
 import { UserProfileView } from './components/UserProfileView';
+import { StudentDashboardView } from './components/StudentDashboardView';
+
 
 const enterpriseTheme = createTheme({
   palette: {
@@ -14,7 +16,7 @@ const enterpriseTheme = createTheme({
       main: '#90D5FF', //'#5a67d8',
     },
     background: {
-      default: '#F2F2F2',
+      default: '#F2F2F2', //'#f4f7fb'
       paper: '#ffffff',
     },
   },
@@ -32,6 +34,7 @@ const enterpriseTheme = createTheme({
   },
 });
 
+
 function App() {
   return (
     <>
@@ -46,6 +49,7 @@ function App() {
 
               <Route path="StudentCrm" element={<StudentCrmView />}></Route>
               <Route path="UserProfileView" element={<UserProfileView />}></Route>
+              <Route path="StudentDashboardView" element={<StudentDashboardView />}></Route>
             </Route>
           </Routes>
         </BrowserRouter>
