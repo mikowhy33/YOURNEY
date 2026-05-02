@@ -1,101 +1,99 @@
 import { useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { Drawer, Button, Box, AppBar, Toolbar, IconButton, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useAppSelector, useAppDispatch } from '../app/hooks';
+import { logOut } from '../features/auth/authSlice';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const DRAWER_WIDTH = 210;
 
+// KONFIG MENU - kto co widzi
+const MENU_CONFIG = {
+  Student: [
+    { title: 'Main Dashboard', path: '/' },
+    { title: 'Schedule View', path: '/ScheduleView' },
+    { title: "Student's metrics", path: '/StudentDashboardView' },
+    { title: "User's profile", path: '/UserProfileView' },
+  ],
+  Teacher: [
+    { title: 'Main Dashboard', path: '/' },
+    { title: 'Schedule View', path: '/ScheduleView' },
+    { title: "Student's crm", path: '/StudentCrm' },
+    { title: "User's profile", path: '/UserProfileView' },
+  ],
+  Manager: [
+    { title: 'Main Dashboard', path: '/' },
+    { title: 'Schedule View', path: '/ScheduleView' },
+    { title: "Student's crm", path: '/StudentCrm' },
+    { title: "User's profile", path: '/UserProfileView' },
+  ],
+};
+
 export const MainLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // ROLA Z REDUXA
+  const { role } = useAppSelector((state) => state.auth);
+  console.log(role +'ROLA')
+  const dispatch = useAppDispatch(); // Inicjalizacja dyspozytora
+  const navigate = useNavigate(); // Inicjalizacja nawigacji
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const drawerContent = (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: { xs: 2, md: 4 }, p: 2 }}>
-      <Button
-        component={NavLink}
-        to="/"
-        onClick={() => setMobileOpen(false)}
-        sx={{
-          justifyContent: 'flex-start',
-          color: '#000000',
-          '&.active': {
-            backgroundColor: 'primary.main',
-            color: '#000000',
-            fontWeight: 'bold',
-          },
-        }}
-      >
-        Main Dashboard
-      </Button>
+  const handleLogout = () => {
+    dispatch(logOut());
+    navigate('/login');
+  };
 
-      <Button
-        component={NavLink}
-        to="/ScheduleView"
-        onClick={() => setMobileOpen(false)}
-        sx={{
-          justifyContent: 'flex-start',
-          color: '#000000',
-          '&.active': {
-            backgroundColor: 'primary.main',
-            color: '#000000',
-            fontWeight: 'bold',
-          },
-        }}
-      >
-        Schedule View
-      </Button>
-      <Button
-        component={NavLink}
-        to="/StudentCrm"
-        onClick={() => setMobileOpen(false)}
-        sx={{
-          justifyContent: 'flex-start',
-          color: '#000000',
-          '&.active': {
-            backgroundColor: 'primary.main',
-            color: '#000000',
-            fontWeight: 'bold',
-          },
-        }}
-      >
-        Student's crm
-      </Button>
-      <Button
-        component={NavLink}
-        to="/UserProfileView"
-        onClick={() => setMobileOpen(false)}
-        sx={{
-          justifyContent: 'flex-start',
-          color: '#000000',
-          '&.active': {
-            backgroundColor: 'primary.main',
-            color: '#000000',
-            fontWeight: 'bold',
-          },
-        }}
-      >
-        User's profile
-      </Button>
-      {/* TO GDY SERWER I ROLE WIDOCZNE TYLKO DLA RODZICOW/UCZNIOW! */}
-      <Button
-        component={NavLink}
-        to="/StudentDashboardView"
-        onClick={() => setMobileOpen(false)}
-        sx={{
-          justifyContent: 'flex-start',
-          color: '#000000',
-          '&.active': {
-            backgroundColor: 'primary.main',
-            color: '#000000',
-            fontWeight: 'bold',
-          },
-        }}
-      >
-        Student's metrics 
-      </Button>
+  //DOBIERAMY MENU NA PODSTAWIE ROLI (domyślnie Student )
+  const currentMenu = role ? MENU_CONFIG[role as keyof typeof MENU_CONFIG] : MENU_CONFIG['Student'];
+
+  const drawerContent = (
+    // Zmiana: height: '100%' pozwala na użycie mt: 'auto' dla elementów na dole
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', mt: { xs: 2, md: 4 } }}>
+      {/* Kontener na linki nawigacyjne */}
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, p: 2 }}>
+        {currentMenu.map((item) => (
+          <Button
+            key={item.title}
+            component={NavLink}
+            to={item.path}
+            onClick={() => setMobileOpen(false)}
+            sx={{
+              justifyContent: 'flex-start',
+              color: '#000000',
+              '&.active': {
+                backgroundColor: 'primary.main',
+                color: '#000000',
+                fontWeight: 'bold',
+              },
+            }}
+          >
+            {item.title}
+          </Button>
+        ))}
+      </Box>
+
+      {/* Kontener na przycisk wylogowania - zepchnięty na dół */}
+      <Box sx={{ mt: 'auto', p: 2, borderTop: '1px solid #e2e8f0' }}>
+        <Button
+          fullWidth
+          onClick={handleLogout}
+          startIcon={<LogoutIcon />}
+          sx={{
+            justifyContent: 'flex-start',
+            color: '#ef4444', // Czerwony kolor dla akcji destrukcyjnych
+            '&:hover': {
+              backgroundColor: 'rgba(239, 68, 68, 0.1)',
+            },
+          }}
+        >
+          Log out
+        </Button>
+      </Box>
     </Box>
   );
 

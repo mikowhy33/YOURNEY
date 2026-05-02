@@ -7,7 +7,9 @@ import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { StudentCrmView } from './components/StudentCrmView';
 import { UserProfileView } from './components/UserProfileView';
 import { StudentDashboardView } from './components/StudentDashboardView';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
+import { LoginView } from './components/LoginView';
 
 const enterpriseTheme = createTheme({
   palette: {
@@ -34,7 +36,6 @@ const enterpriseTheme = createTheme({
   },
 });
 
-
 function App() {
   return (
     <>
@@ -42,14 +43,24 @@ function App() {
         <CssBaseline /> {/*reset marginesow box-sizing etc! */}
         <BrowserRouter>
           <Routes>
+            <Route path="/login" element={<LoginView />}></Route>
             <Route element={<MainLayout></MainLayout>}>
-              <Route path="/" element={<DashboardHome />}></Route>
+              {/* Ochrona ścieżek  */}
+              <Route element={<ProtectedRoute allowedRoles={['Teacher', 'Manager', 'Student']} />}>
+                <Route path="/" element={<DashboardHome />}></Route>
+                <Route path="ScheduleView" element={<ScheduleView />}></Route>
 
-              <Route path="ScheduleView" element={<ScheduleView />}></Route>
+                <Route path="UserProfileView" element={<UserProfileView />}></Route>
+              </Route>
 
-              <Route path="StudentCrm" element={<StudentCrmView />}></Route>
-              <Route path="UserProfileView" element={<UserProfileView />}></Route>
-              <Route path="StudentDashboardView" element={<StudentDashboardView />}></Route>
+              <Route element={<ProtectedRoute allowedRoles={['Teacher', 'Manager']} />}>
+                <Route path="ScheduleView" element={<ScheduleView />}></Route>
+                <Route path="StudentCrm" element={<StudentCrmView />}></Route>
+              </Route>
+
+              <Route element={<ProtectedRoute allowedRoles={['Student']} />}>
+                <Route path="StudentDashboardView" element={<StudentDashboardView />}></Route>
+              </Route>
             </Route>
           </Routes>
         </BrowserRouter>
